@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dogs
+  labels:
+    app: dogs
+spec:
+  ports:
+    - port: 80
+      targetPort: http-server
+  selector:
+    app: dogs
+  type:
+    ClusterIP

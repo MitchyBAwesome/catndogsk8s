@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: dogs-deployment
+  labels:
+    apps: dogs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dogs
+  template:
+    metadata:
+      labels:
+        app: dogs
+    spec:
+      containers:
+        - name: dogs
+          image: mitchybgood/dogs:alpine-1.0
+          ports:
+            - name: http-server
+              containerPort: 80

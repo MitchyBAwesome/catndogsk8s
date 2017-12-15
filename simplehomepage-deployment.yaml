@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: simplehomepage-deployment
+  labels:
+    apps: simplehomepage
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: simplehomepage
+  template:
+    metadata:
+      labels:
+        app: simplehomepage
+    spec:
+      containers:
+        - name: simplehomepage
+          image: mitchybgood/simplehomepage:alpine-1.0
+          ports:
+            - name: http-server
+              containerPort: 80

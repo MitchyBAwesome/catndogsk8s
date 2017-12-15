@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: cats-deployment
+  labels:
+    apps: cats
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cats
+  template:
+    metadata:
+      labels:
+        app: cats
+    spec:
+      containers:
+        - name: cats
+          image: mitchybgood/cats:ubuntu-1.0
+          ports:
+            - name: http-server
+              containerPort: 80
